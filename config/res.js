@@ -9,7 +9,7 @@ function OK200(data, res) {
 function OK201(data, res) {
   return res.status(201).json({
     ok: true,
-    message: 'New document has been created',
+    message: 'New document has been created.',
     data: data
    });
 };

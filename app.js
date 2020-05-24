@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const morgan = require('morgan')
 const mongoCON = require('./config/config').CON;
 const loginRoutes = require('./routes/login');
 const userRoutes = require('./routes/user');
@@ -24,7 +25,7 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
+app.use(morgan('combined'))
 app.use('/user', userRoutes);
 app.use('/login', loginRoutes);
 
