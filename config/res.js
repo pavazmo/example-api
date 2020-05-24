@@ -1,4 +1,10 @@
 'use strict'
+function OK200(data, res) {
+  return res.status(200).json({
+    ok: true,
+    message: data,
+  });
+};
 
 function OK201(data, res) {
   return res.status(201).json({
@@ -6,21 +12,6 @@ function OK201(data, res) {
     message: 'New document has been created',
     data: data
    });
-};
-
-function error500(err, res) {
-  return res.status(500).json({
-    ok: false,
-    message: 'Error in bbdd, Internal Server Error.',
-    errors: err
-  });
-};
-
-function OK200(data, res) {
-  return res.status(200).json({
-    ok: true,
-    message: data,
-  });
 };
 
 function error400(err, res) {
@@ -38,6 +29,14 @@ function error404(err, res) {
     errors: err
   });
 }
+
+function error500(err, res) {
+  return res.status(500).json({
+    ok: false,
+    message: 'Error in bbdd, Internal Server Error.',
+    errors: err
+  });
+};
   
 module.exports = {
     error500,
