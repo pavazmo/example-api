@@ -1,0 +1,1 @@
+module.exports.CON = 'mongodb://localhost:27017/api-example';
