@@ -1,0 +1,75 @@
+'use strict'
+const resp = require('../config/res');
+const User = require('../models/user');
+const bcrypt = require('bcryptjs');
+
+function createUser(req, res){
+  const body = req.body;
+  const userCreate = new User({
+    name: body.name,
+    surname: body.surname,
+    country: body.country,
+    email: body.email,
+    phone: body.phone,
+    postalCode: body.postalCode,
+    password: bcrypt.hashSync(body.password, 10),
+  })
+
+  userCreate.save((err, savedUser) => {
+    if (err) {
+      return respuesta.error500( err, res );
+    }
+
+    resp.OK201(savedUser, res);
+  });
+}
+
+function updateUser(req, res){
+  const id = req.params.id;
+  const body = req.body;
+  User.findById(id, (err, foundUser) => {
+    if (err) {
+      return resp.error500( err, res );
+    }
+
+    if (!foundUser) {
+      return resp.error404( err, res );
+    }
+
+    foundUser.name = body.name ? body.name : foundUser.name;
+    foundUser.surname = body.surname ? body.surname : foundUser.surname;
+    foundUser.country = body.country ? body.country: foundUser.country;
+    foundUser.phone = body.phone ? body.phone: foundUser.phone;
+    foundUser.email = body.email ? body.email: foundUser.email;
+    foundUser.postalCode = body.postalCode ? body.postalCode: foundUser.postalCode;
+ 
+    foundUser.save((err, saveUser) => {
+      if (err) {
+        return resp.error400( err, res );
+      }
+
+      resp.OK201(saveUser, res);
+    });
+  });
+}
+
+function deleteUser(req, res){
+  const id = req.params.id;
+  User.findByIdAndRemove(id, { useFindAndModify: false }, (err, deletedUser) => {
+    if (err) {
+        return resp.error500(err, res );
+    }
+
+    if (!deletedUser) {
+        return resp.error404(err, res );
+    }
+
+    resp.OK200(deletedUser, res);
+  });
+}
+  
+module.exports = {
+  createUser,
+  updateUser,
+  deleteUser
+}
