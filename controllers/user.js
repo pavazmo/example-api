@@ -1,7 +1,7 @@
 'use strict'
+const bcrypt = require('bcryptjs');
 const resp = require('../config/res');
 const User = require('../models/user');
-const bcrypt = require('bcryptjs');
 
 function createUser(req, res){
   const body = req.body;

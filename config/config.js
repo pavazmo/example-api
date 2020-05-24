@@ -1,1 +1,7 @@
-module.exports.CON = 'mongodb://localhost:27017/api-example';
+const CON = 'mongodb://localhost:27017/api-example';
+const SEED = '@this-is@-a-difficult-seed';
+
+module.exports = {
+  CON,
+  SEED
+}

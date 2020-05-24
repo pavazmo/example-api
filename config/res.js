@@ -7,11 +7,11 @@ function OK201(data, res) {
     data: data
    });
 };
-  
+
 function error500(err, res) {
   return res.status(500).json({
     ok: false,
-    message: 'Error en bbdd, Internal Server Error.',
+    message: 'Error in bbdd, Internal Server Error.',
     errors: err
   });
 };
