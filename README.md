@@ -16,6 +16,6 @@ from the root of the directory structure.
 ## Docker
 
 You can try it on docker using
-<code>docker-compose up</code>
+<code>docker compose up --build</code>
 
 

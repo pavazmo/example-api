@@ -8,10 +8,10 @@ services:
       - "3000:3000"
     links:
       - mongo
+    environment:
+      MONGO_URL: mongodb://mongo:27017/api-example
   mongo:
     container_name: mongo
     image: mongo
-    volumes:
-      - ./data:/data/db
-    ports:
-      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: "api-example"
