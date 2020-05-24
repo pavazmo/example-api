@@ -9,7 +9,7 @@ const userRoutes = require('./routes/user');
 const app = express();
 
 //db
-mongoose.connection.openUri( mongoCON, { useUnifiedTopology: true, useNewUrlParser: true }, (err, res) => { 
+mongoose.connection.openUri( mongoCON, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }, (err, res) => { 
   if (err) throw err;
   console.log('Mongo port 27017: \x1b[32m%s\x1b[0m', 'online');
 })

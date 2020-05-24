@@ -52,6 +52,6 @@ describe('Test the user delete/modify path', () => {
             expect(response.statusCode).toBe(200);
             done();
         });
-      });
+    });
 });
 

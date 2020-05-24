@@ -17,7 +17,7 @@ function createUser(req, res){
 
   userCreate.save((err, savedUser) => {
     if (err) {
-      return respuesta.error500( err, res );
+      return resp.error500( err, res );
     }
 
     resp.OK201(savedUser, res);
@@ -42,7 +42,8 @@ function updateUser(req, res){
     foundUser.phone = body.phone ? body.phone: foundUser.phone;
     foundUser.email = body.email ? body.email: foundUser.email;
     foundUser.postalCode = body.postalCode ? body.postalCode: foundUser.postalCode;
- 
+    foundUser.password = body.newPassword ? bcrypt.hashSync(body.newPassword, 10): foundUser.password;
+
     foundUser.save((err, saveUser) => {
       if (err) {
         return resp.error400( err, res );
