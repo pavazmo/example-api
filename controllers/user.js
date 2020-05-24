@@ -25,9 +25,9 @@ function createUser(req, res){
 }
 
 function updateUser(req, res){
-  const id = req.params.id;
+  const userEmail = req.query.email;
   const body = req.body;
-  User.findById(id, (err, foundUser) => {
+  User.findOne({ email: userEmail }, (err, foundUser) => {
     if (err) {
       return resp.error500( err, res );
     }
@@ -54,8 +54,8 @@ function updateUser(req, res){
 }
 
 function deleteUser(req, res){
-  const id = req.params.id;
-  User.findByIdAndRemove(id, { useFindAndModify: false }, (err, deletedUser) => {
+  const userEmail = req.query.email;
+  User.findOneAndRemove({email: userEmail}, { useFindAndModify: false }, (err, deletedUser) => {
     if (err) {
         return resp.error500(err, res );
     }
