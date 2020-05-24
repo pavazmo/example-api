@@ -1,19 +1,21 @@
-# Example_docker_node
+# API CRUD
 
-## Commands
+This is a code repository for a test API CRUD.
 
-First of all build your image
+## Setup
 
-<code>docker build -t <your username>/example-api .</code>
+* Install dependencies. Just run
+<code>npm install</code>
+from the root of the directory structure.
+* Run the app
+<code>node app</code>
+* Run tests
+<code>npm test</code>
+* Check <a href='https://documenter.getpostman.com/view/2593620/Szt8fAgX'>postman documentation</a>
 
-Run your image
+## Docker
 
-<code>docker run -p localhost:3000 -d pavazmo/example-api</code>
+You can try it on docker using
+<code>docker-compose up</code>
 
-Look information about your images running
 
-<code>docker ps</code>
-
-Stop container
-
-<code>docker stop <ID></code>
